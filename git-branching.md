@@ -215,9 +215,7 @@ To https://github.com/Firewal7/devops-netology.git
 
 Мы сэмулировали типичную ситуации в разработке кода, когда команда разработчиков работала над одним и тем же участком кода, и кто-то из разработчиков предпочитает делать merge, а кто-то — rebase. Конфликты с merge обычно решаются просто, а с rebase бывают сложности, поэтому давайте смержим все наработки в main и разрешим конфликты.
 
-Если всё было сделано правильно, то на странице network в GitHub, находящейся по адресу https://github.com/ВАШ_ЛОГИН/ВАШ_РЕПОЗИТОРИЙ/network, будет примерно такая схема:
-
-![Ссылка 1](https://github.com/Firewal7/devops-netology/blob/main/image/02-git-03-branching-1.jpg)
+![1-1](./img/01-git-branch.jpg)
 
 ### Merge
 
@@ -236,7 +234,7 @@ Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
 ```
 В результате получаем такую схему:
 
-![Ссылка 2](https://github.com/Firewal7/devops-netology/blob/main/image/02-git-03-branching-2.jpg)
+![1-2](./img/02-git-branch.jpg)
 
 ### Rebase
 
