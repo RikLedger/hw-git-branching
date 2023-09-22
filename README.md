@@ -1,11 +1,24 @@
 # Домашнее задание к занятию «Ветвления в Git» - `Горбачёв Олег`
- 
+
+### Цель задания
+
+В процессе работы над заданием вы потренеруетесь делать merge и rebase. В результате вы поймете разницу между ними и научитесь решать конфликты.   
+
+Обычно при нормальном ходе разработки выполнять `rebase` достаточно просто. 
+Это позволяет объединить множество промежуточных коммитов при решении задачи, чтобы не засорять историю. Поэтому многие команды и разработчики предпочитают такой способ.   
+
+ ### Дополнительные материалы для выполнения задания
+
+Тренажёр [LearnGitBranching](https://learngitbranching.js.org/), где можно потренироваться в работе с деревом коммитов и ветвлений. 
+
+---
+
 ### Задание «Ветвление, merge и rebase»
 
 Шаг 1. Предположим, что есть задача — написать скрипт, выводящий на экран параметры его запуска. Давайте посмотрим, как будет отличаться работа над этим скриптом с использованием ветвления, merge и rebase.
 
 Создайте в своём репозитории каталог branching и в нём два файла — merge.sh и rebase.sh — с содержимым:
-```
+```bash
 #!/bin/bash
 # display command line options
 
@@ -26,7 +39,7 @@ drwxr-xr-x 10 root root 4096 May 14 09:33 ..
 -rw-r--r--  1 root root    0 May 14 09:35 rebase.sh
 ```
 
-Шаг 2. Создадим коммит с описанием prepare for merge and rebase и отправим его в ветку main.
+Шаг 2. Создадим коммит с описанием `prepare for merge and rebase` и отправим его в ветку `main`.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git add *                                   
@@ -41,7 +54,7 @@ drwxr-xr-x 10 root root 4096 May 14 09:33 ..
 
 ### Подготовка файла merge.sh
 
-Шаг 1. Создайте ветку git-merge.
+Шаг 1. Создайте ветку `git-merge`.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git checkout -b git-merge                   
@@ -59,7 +72,7 @@ for param in "$@"; do
     count=$(( $count + 1 ))
 done
 ```
-Шаг 3. Создайте коммит merge: @ instead *, отправьте изменения в репозиторий.
+Шаг 3. Создайте коммит `merge: @ instead *`, отправьте изменения в репозиторий.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git commit -m 'merge: @ instead *'
@@ -81,7 +94,7 @@ remote:
 To https://github.com/Firewal7/devops-netology.git
  * [new branch]      git-merge -> git-merge
 ```
-Шаг 4. Разработчик подумал и решил внести ещё одно изменение в merge.sh:
+Шаг 4. Разработчик подумал и решил внести ещё одно изменение в `merge.sh`:
 ```
 #!/bin/bash
 # display command line options
@@ -96,7 +109,7 @@ done
 
 Теперь скрипт будет отображать каждый переданный ему параметр отдельно.
 
-Шаг 5. Создайте коммит merge: use shift и отправьте изменения в репозиторий.
+Шаг 5. Создайте коммит `merge: use shift` и отправьте изменения в репозиторий.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git commit -m 'merge: use shift'  
@@ -116,9 +129,9 @@ To https://github.com/Firewal7/devops-netology.git
 ```
 
 
-### Изменим main
+### Изменим `main`
 
-Шаг 1. Вернитесь в ветку main. Шаг 2. Предположим, что пока мы работали над веткой git-merge, кто-то изменил main. Для этого изменим содержимое файла rebase.sh на:
+Шаг 1. Вернитесь в ветку `main`. Шаг 2. Предположим, что пока мы работали над веткой `git-merge`, кто-то изменил `main`. Для этого изменим содержимое файла `rebase.sh` на:
 ```
 #!/bin/bash
 # display command line options
@@ -142,10 +155,10 @@ To https://github.com/Firewal7/devops-netology.git
    ac171c8..7d23527  main -> main
 ```
 
-### Подготовка файла rebase.sh
+### Подготовка файла `rebase.sh`
 
-Шаг 1. Предположим, что теперь другой участник нашей команды не сделал git pull либо просто хотел ответвиться не от последнего коммита в main, а от коммита, когда мы только создали два файла merge.sh и rebase.sh на первом шаге.
-Для этого при помощи команды git log найдём хеш коммита prepare for merge and rebase и выполним git checkout на него так: git checkout 8baf217e80ef17ff577883fda90f6487f67bbcea (хеш будет другой).
+Шаг 1. Предположим, что теперь другой участник нашей команды не сделал `git pull` либо просто хотел ответвиться не от последнего коммита в main, а от коммита, когда мы только создали два файла merge.sh и rebase.sh на первом шаге.
+Для этого при помощи команды git log найдём хеш коммита prepare for merge and rebase и выполним `git checkout` на него так: git checkout 8baf217e80ef17ff577883fda90f6487f67bbcea (хеш будет другой).
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git checkout 7d235275c758acd0c3da94586b7f9c7b1b1aee54
@@ -161,7 +174,7 @@ Note: switching to '7d235275c758acd0c3da94586b7f9c7b1b1aee54'.
   main
 ```
 
- Шаг 2. Создадим ветку git-rebase, основываясь на текущем коммите. 
+ Шаг 2. Создадим ветку `git-rebase`, основываясь на текущем коммите. 
  ```
  ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git checkout -b git-rebase                           
@@ -181,14 +194,14 @@ done
 
 echo "====="
 ```
-Шаг 4. Отправим эти изменения в ветку git-rebase с комментарием git-rebase 1.
+Шаг 4. Отправим эти изменения в ветку `git-rebase` с комментарием `git-rebase 1`.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git commit -m 'git-rebase 1'    
 [git-rebase 66b9ece] git-rebase 1
  1 file changed, 4 insertions(+), 2 deletions(-)
 ```
-Шаг 5. И сделаем ещё один коммит git-rebase 2 с пушем, заменив echo "Parameter: $param" на echo "Next parameter: $param".
+Шаг 5. И сделаем ещё один коммит `git-rebase 2` с пушем, заменив `echo "Parameter: $param"` на `echo "Next parameter: $param"`.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology]
 └─# git commit -m 'git-rebase 2'
@@ -219,7 +232,7 @@ To https://github.com/Firewal7/devops-netology.git
 
 ### Merge
 
-Сливаем ветку git-merge в main и отправляем изменения в репозиторий, должно получиться без конфликтов:
+Сливаем ветку `git-merge` в main и отправляем изменения в репозиторий, должно получиться без конфликтов:
 ```
 $ git merge git-merge
 Merge made by the 'recursive' strategy.
@@ -238,7 +251,7 @@ Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
 
 ### Rebase
 
-Шаг 1. Перед мержем ветки git-rebase выполним её rebase на main. Да, мы специально создали ситуацию с конфликтами, чтобы потренироваться их решать. Шаг 2. Переключаемся на ветку git-rebase и выполняем git rebase -i main. В открывшемся диалоге должно быть два выполненных коммита, давайте заодно объединим их в один, указав слева от нижнего fixup. В результате получаем:
+Шаг 1. Перед мержем ветки `git-rebase` выполним её rebase на main. Да, мы специально создали ситуацию с конфликтами, чтобы потренироваться их решать. Шаг 2. Переключаемся на ветку `git-rebase` и выполняем `git rebase -i main`. В открывшемся диалоге должно быть два выполненных коммита, давайте заодно объединим их в один, указав слева от нижнего `fixup`. В результате получаем:
 ```
 $ git rebase -i main
 Auto-merging branching/rebase.sh
@@ -262,7 +275,7 @@ hint: You can instead skip this commit: run "git rebase --skip".
 hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
 Could not apply 66b9ece... git-rebase 1
 ```
-Если посмотреть содержимое файла rebase.sh, то увидим метки, оставленные Git для решения конфликта:
+Если посмотреть содержимое файла `rebase.sh`, то увидим метки, оставленные Git для решения конфликта:
 ```
 cat rebase.sh
 #!/bin/bash
@@ -281,7 +294,7 @@ done
 ```
 echo "\$@ Parameter #$count = $param"
 ```
-Шаг 4. Сообщим Git, что конфликт решён git add rebase.sh и продолжим rebase git rebase --continue.
+Шаг 4. Сообщим Git, что конфликт решён `git add rebase.sh` и продолжим `rebase git rebase --continue`.
 ```
 ┌──(root㉿kali)-[/home/kali/lesson/devops-netology/branching]
 └─# git add rebase.sh
@@ -297,9 +310,9 @@ hint: You can instead skip this commit: run "git rebase --skip".
 hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
 Could not apply de7659e... git-rebase 2
 ```
-Шаг 5. Опять получим конфликт в файле rebase.sh при попытке применения нашего второго коммита. Давайте разрешим конфликт, оставив строчку echo "Next parameter: $param".
+Шаг 5. Опять получим конфликт в файле `rebase.sh` при попытке применения нашего второго коммита. Давайте разрешим конфликт, оставив строчку `echo "Next parameter: $param"`.
 
-Шаг 6. Далее опять сообщаем Git о том, что конфликт разрешён — git add rebase.sh — и продолжим rebase — git rebase --continue.
+Шаг 6. Далее опять сообщаем Git о том, что конфликт разрешён — `git add rebase.sh` — и продолжим `rebase — git rebase --continue`.
 
 В результате будет открыт текстовый редактор, предлагающий написать комментарий к новому объединённому коммиту:
 ```
@@ -328,7 +341,7 @@ Successfully rebased and updated refs/heads/git-rebase
  1 file changed, 1 insertion(+), 1 deletion(-)
 Successfully rebased and updated refs/heads/git-rebase.
 ```
-Шаг 7. И попробуем выполнить git push либо git push -u origin git-rebase, чтобы точно указать, что и куда мы хотим запушить.
+Шаг 7. И попробуем выполнить `git push` либо `git push -u origin git-rebase`, чтобы точно указать, что и куда мы хотим запушить.
 
 Эта команда завершится с ошибкой:
 ```
@@ -354,7 +367,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 Это произошло, потому что мы пытаемся перезаписать историю.
 
-Шаг 8. Чтобы Git позволил нам это сделать, добавим флаг force:
+Шаг 8. Чтобы Git позволил нам это сделать, добавим флаг `force`:
 ```
 git push -u origin git-rebase -f
 Enumerating objects: 10, done.
@@ -381,7 +394,7 @@ To https://github.com/Firewal7/devops-netology.git
  + de7659e...21f7f65 git-rebase -> git-rebase (forced update)
 branch 'git-rebase' set up to track 'origin/git-rebase'.
 ```
-Шаг 9. Теперь можно смержить ветку git-rebase в main без конфликтов и без дополнительного мерж-комита простой перемоткой:
+Шаг 9. Теперь можно смержить ветку `git-rebase` в `main` без конфликтов и без дополнительного мерж-комита простой перемоткой:
 ```
 $ git checkout main
 Switched to branch 'main'
